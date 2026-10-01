@@ -1,0 +1,4 @@
+import {describe,it,expect,beforeEach} from 'vitest';
+import {elapsed,exportState,loadState,saveState} from './storage';
+import {initialState} from './data';
+describe('local-first practice state',()=>{beforeEach(()=>localStorage.clear());it('persists the Day 1 plan',()=>{const s=initialState();s.sessions[0].tasks[0].actualSeconds=42;saveState(s);expect(loadState().sessions[0].tasks[0].actualSeconds).toBe(42)});it('reconstructs active elapsed time after refresh',()=>{const t=initialState().sessions[0].tasks[0];t.status='active';t.actualSeconds=10;t.timerStartedAt=1_000;expect(elapsed(t,6_000)).toBe(15)});it('exports active timers safely paused',()=>{const s=initialState();s.sessions[0].tasks[0].status='active';s.sessions[0].tasks[0].timerStartedAt=Date.now()-2000;expect(JSON.parse(exportState(s)).sessions[0].tasks[0].status).toBe('paused')})});

@@ -1,0 +1,14 @@
+{
+  "name": "Cello Practice Lab",
+  "short_name": "Cello Lab",
+  "description": "Deliberate practice for audition-ready cello playing",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f2f0eb",
+  "theme_color": "#172923",
+  "icons": [
+    {"src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}
